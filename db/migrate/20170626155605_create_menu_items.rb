@@ -4,7 +4,7 @@ class CreateMenuItems < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :description
       t.string :price
-      t.integer :category_id
+      t.references :section, foreign_key: true
 
       t.timestamps
     end
