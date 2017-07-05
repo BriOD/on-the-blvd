@@ -17,9 +17,18 @@ class Api::MenuItemsController < ApplicationController
     end
   end
 
+  def destroy
+    menu_item = MenuItem.find_by(id: params[:id])
+    if menu_item.delete
+      render json: {success: 'ok'}
+    else
+      render json: {message: 'error'}, status: 412
+    end
+  end
+
   private
     def menu_item_params
-      params.require(:menu_iems).permit(:name, :description, :price)
+      params.require(:menu_item).permit(:name, :description, :price)
     end
 
 end
