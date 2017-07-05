@@ -11,7 +11,7 @@ class Api::MenuItemsController < ApplicationController
   def create
     menu_item = MenuItem.create(menu_item_params)
     if menu_item.save
-      render json: {id: menu_item.id, success: 'ok'}
+      render json: menu_item.to_json
     else
       render json: {message: 'error'}, status: 412
     end
