@@ -19,6 +19,7 @@ class Api::MenuItemsController < ApplicationController
 
   def destroy
     menu_item = MenuItem.find_by(id: params[:id])
+    # binding.pry
     if menu_item.delete
       render json: {success: 'ok'}
     else
